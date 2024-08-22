@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, request
+from handlers.relay_handler import move_down, move_left, move_up, move_right, stop
 
 app = Flask(__name__)
 
@@ -16,9 +17,16 @@ def button_event():
     action = request.json.get('action')
 
     if action == 'press':
-        print(f"Button {button_name} pressed")
+        if button_name == 'up':
+            move_up()
+        elif button_name == 'down':
+            move_down()
+        elif button_name == 'left':
+            move_left()
+        elif button_name == 'right':
+            move_right()
     elif action == 'release':
-        print(f"Button {button_name} released")
+        stop()
 
     return jsonify({'button_message': 'test'})
 

@@ -12,12 +12,12 @@
     <h1>Azimuth Angle: {{ value2 }}</h1>
     
     <div class="buttons">
-        <button class="arrow-left" ontouchstart="buttonPress('вліво')" ontouchend="buttonRelease('вліво')"></button>
+        <button class="arrow-left" ontouchstart="buttonPress('left')" ontouchend="buttonRelease('left')"></button>
         <div>
-        <button class="arrow-up" ontouchstart="buttonPress('вгору')" ontouchend="buttonRelease('вгору')"></button>
-        <button class="arrow-down" ontouchstart="buttonPress('вниз')" ontouchend="buttonRelease('вниз')"></button>
+        <button class="arrow-up" ontouchstart="buttonPress('up')" ontouchend="buttonRelease('up')"></button>
+        <button class="arrow-down" ontouchstart="buttonPress('down')" ontouchend="buttonRelease('down')"></button>
         </div>
-        <button class="arrow-right" ontouchstart="buttonPress('вправо')" ontouchend="buttonRelease('вправо')"></button>
+        <button class="arrow-right" ontouchstart="buttonPress('right')" ontouchend="buttonRelease('right')"></button>
         </div>
 
     <script src="{{ url_for('static', filename='main.js')}}"></script>
