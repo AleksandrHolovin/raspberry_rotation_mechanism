@@ -2,13 +2,12 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
-value1 = "Значення 1"
-value2 = "Значення 2"
-button_message = ""  
+value1 = "30d"
+value2 = "30d"
 
 @app.route('/')
 def index():
-    return render_template('index.html', value1=value1, value2=value2, button_message=button_message)
+    return render_template('index.html', value1=value1, value2=value2)
 
 @app.route('/button_event', methods=['POST'])
 def button_event():
@@ -17,11 +16,11 @@ def button_event():
     action = request.json.get('action')
 
     if action == 'press':
-        button_message = f"Кнопка {button_name} натиснута"
+        print(f"Button {button_name} pressed")
     elif action == 'release':
-        button_message = ""
+        print(f"Button {button_name} released")
 
-    return jsonify({'button_message': button_message})
+    return jsonify({'button_message': 'test'})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

@@ -1,35 +1,45 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #d0a6c1;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 h1 {
-    margin: 10px;
+    margin-top: 10px;
 }
 
 .buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
 
 .buttons button {
-    display: block;
+    display: flex;
     margin: 10px;
-    padding: 20px;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
     font-size: 24px;
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: gray;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     box-shadow: 0 4px #999;
+    outline: none;
 }
 
 .buttons button:active {
