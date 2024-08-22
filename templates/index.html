@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTIMATE SKY DEFENCE SHOTRM 4</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <h1>Значення 1: {{ value1 }}</h1>
+    <h1>Значення 2: {{ value2 }}</h1>
+    <h1 id="button-message">{{ button_message }}</h1>
+    
+    <div class="buttons">
+        <button class="arrow-up" ontouchstart="buttonPress('вгору')" ontouchend="buttonRelease('вгору')"></button>
+        <button class="arrow-left" ontouchstart="buttonPress('вліво')" ontouchend="buttonRelease('вліво')"></button>
+        <button class="arrow-right" ontouchstart="buttonPress('вправо')" ontouchend="buttonRelease('вправо')"></button>
+        <button class="arrow-down" ontouchstart="buttonPress('вниз')" ontouchend="buttonRelease('вниз')"></button>
+    </div>
+
+    <script>
+        function buttonPress(buttonName) {
+            fetch('/button_event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    button_name: buttonName,
+                    action: 'press'
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('button-message').innerText = data.button_message;
+            });
+        }
+
+        function buttonRelease(buttonName) {
+            fetch('/button_event', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    button_name: buttonName,
+                    action: 'release'
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('button-message').innerText = data.button_message;
+            });
+        }
+    </script>
+</body>
+</html>
