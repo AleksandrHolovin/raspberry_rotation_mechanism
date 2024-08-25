@@ -37,7 +37,7 @@ for pin in relay_pins:
     
 def handle_engines(ModeSet):
     for pin in ModeSet:
-        GPIO.output(pin.key, pin.value)
+        GPIO.output(pin["pin"], pin["value"])
         
 START_FIRST_ENGINE_IN_DIRECT_MODE_SET = [
     {
@@ -118,8 +118,8 @@ def move_right():
     handle_engines(START_SECOND_ENGINE_IN_REVERSE_MODE_SET)
 
 def move_left():
-    handle_engines(START_FIRST_ENGINE_IN_DIRECT_MODE_SET)
-    handle_engines(START_SECOND_ENGINE_IN_REVERSE_MODE_SET)
+    handle_engines(START_FIRST_ENGINE_IN_REVERSE_MODE_SET)
+    handle_engines(START_SECOND_ENGINE_IN_DIRECT_MODE_SET)
 
 def move_up():
     handle_engines(START_FIRST_ENGINE_IN_DIRECT_MODE_SET)
