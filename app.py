@@ -1,14 +1,24 @@
 from flask import Flask, render_template, jsonify, request
 from handlers.relay_handler import move_down, move_left, move_up, move_right, stop
+from handlers.sensor_handler import SensorHandler
 
 app = Flask(__name__)
 
-value1 = "30d"
 value2 = "30d"
 
+sensor_handler = SensorHandler()
+sensor_handler.start()
+
 @app.route('/')
+
 def index():
-    return render_template('index.html', value1=value1, value2=value2)
+    return render_template('index.html', value2=value2)
+
+@app.route('/get_angle')
+def get_angle():
+    angle = sensor_handler.get_last_printed_angle()
+    return jsonify({'angle': angle})
+
 
 @app.route('/button_event', methods=['POST'])
 def button_event():

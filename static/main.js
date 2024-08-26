@@ -25,3 +25,11 @@ function buttonRelease(buttonName) {
     })
     .then(response => response.json())
 }
+function fetchAngle() {
+    fetch('/get_angle')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('angle').textContent = data.angle;
+        });
+}
+setInterval(fetchAngle, 1000);

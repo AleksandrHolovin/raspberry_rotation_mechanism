@@ -2,7 +2,6 @@ import RPi.GPIO as GPIO
 import termios
 import tty
 import sys
-from pynput import keyboard
 
 #pin definitions
 #first engine pins
