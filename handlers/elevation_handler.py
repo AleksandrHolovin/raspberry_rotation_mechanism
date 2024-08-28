@@ -62,8 +62,8 @@ def get_elevation_angle(correction_factor=1.0):
 def exponential_moving_average(current_value, previous_value, alpha=0.1):
     return int(round(alpha * current_value + (1 - alpha) * previous_value))
 
-class SensorHandler(threading.Thread):
-    def __init__(self, alpha=0.5, correction_factor=1.05):
+class ElevationHandler(threading.Thread):
+    def __init__(self, alpha=0.1, correction_factor=1.05):
         threading.Thread.__init__(self)
         self.alpha = alpha
         self.correction_factor = correction_factor
