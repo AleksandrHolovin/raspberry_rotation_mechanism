@@ -63,7 +63,7 @@ def exponential_moving_average(current_value, previous_value, alpha=0.9):
     return int(round(alpha * current_value + (1 - alpha) * previous_value))
 
 class ElevationHandler(threading.Thread):
-    def __init__(self, alpha=0.9, correction_factor=1.05):
+    def __init__(self, alpha=0.5, correction_factor=1.05):
         threading.Thread.__init__(self)
         self.alpha = alpha
         self.correction_factor = correction_factor
@@ -79,7 +79,7 @@ class ElevationHandler(threading.Thread):
                 if self.smoothed_angle != self.last_printed_angle:
                     self.last_printed_angle = self.smoothed_angle
                     # print("Stabilized Elevation Angle (EMA): {}°".format(self.smoothed_angle))
-            time.sleep(0.5)
+            time.sleep(0.1)
 
     def get_last_printed_angle(self):
         with self.lock:

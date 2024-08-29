@@ -134,8 +134,8 @@ def stop():
     for pin in relay_pins:
         GPIO.output(pin, True)
 
-elevation_handler = ElevationHandler()
-elevation_handler.start()
+# elevation_handler = ElevationHandler()
+# elevation_handler.start()
 
 def correct_elevation(target_angle, current_angle):
     if target_angle is None or current_angle is None:
@@ -147,10 +147,9 @@ def correct_elevation(target_angle, current_angle):
     print(angle_difference)
     # Adjust to correct elevation angle
     if angle_difference > 0:
-        move_down()
+        move_up()
         while True:
             listened_current_angle = elevation_handler.get_last_printed_angle()
-            print(f"Listening angle (up): {listened_current_angle}")
             
             # Stop the motor when the current angle reaches or exceeds the target angle
             if listened_current_angle >= target_angle:
@@ -158,10 +157,9 @@ def correct_elevation(target_angle, current_angle):
                 break
             time.sleep(0.1) 
     elif angle_difference < 0:
-        move_up()
+        move_down()
         while True:
             listened_current_angle = elevation_handler.get_last_printed_angle()
-            print(f"Listening angle (up): {listened_current_angle}")
             
             # Stop the motor when the current angle reaches or exceeds the target angle
             if listened_current_angle >= target_angle:

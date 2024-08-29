@@ -40,17 +40,17 @@ def button_event():
             move_down()
         elif button_name == 'left' or button_name == 'right':
             # Save the current elevation angle before rotating
-            saved_elevation_angle = current_angle
+            # saved_elevation_angle = current_angle
             if button_name == 'left':
                 move_left()
             elif button_name == 'right':
                 move_right()
     elif action == 'release':
         stop()
-        time.sleep(0.5)
-        if button_name == 'left' or button_name == 'right':
-            #Correct the elevation after rotating
-            correct_elevation(saved_elevation_angle, current_angle)
+        # time.sleep(0.1)
+        # if button_name == 'left' or button_name == 'right':
+        #     #Correct the elevation after rotating
+        #     correct_elevation(saved_elevation_angle, current_angle)
 
     return jsonify({'button_message': 'test'})
 
