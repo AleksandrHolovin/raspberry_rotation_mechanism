@@ -26,11 +26,11 @@ function buttonRelease(buttonName) {
     .then(response => response.json())
 }
 function fetchAngle() {
-    fetch('/get_angle')
+    fetch('/get_angles')
         .then(response => response.json())
         .then(data => {
             document.getElementById('elevation').textContent = data.elevation;
-            document.getElementById('azimuth').textContent = data.azimuth;
+            // document.getElementById('azimuth').textContent = data.azimuth;
         });
 }
-setInterval(fetchAngle, 1000);
+setInterval(fetchAngle, 100);

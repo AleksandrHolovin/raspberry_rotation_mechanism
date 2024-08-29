@@ -3,5 +3,5 @@
 
 cd / 
 cd /home/oleksandr/Projects/rotation_machanism
-sudo python app.py
+# sudo python app.py
 cd /
