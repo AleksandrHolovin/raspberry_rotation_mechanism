@@ -30,7 +30,7 @@ function fetchAngle() {
         .then(response => response.json())
         .then(data => {
             document.getElementById('elevation').textContent = data.elevation;
-            // document.getElementById('azimuth').textContent = data.azimuth;
+            document.getElementById('azimuth').textContent = data.azimuth;
         });
 }
 setInterval(fetchAngle, 100);
