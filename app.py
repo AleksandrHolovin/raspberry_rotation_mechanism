@@ -1,16 +1,29 @@
 from flask import Flask, render_template, jsonify, request
-from flask_socketio import SocketIO, emit
 from handlers.relay_handler import move_down, move_left, move_up, move_right, stop
 from handlers.elevation_handler import ElevationHandler
-from handlers.rotation_handler import RotationHandler
+from handlers.rotation_handler import AngleHandler
 import time
+import os
+import logging
+
+logger = logging.getLogger('werkzeug')
+logger.setLevel(logging.ERROR)
+
+logging.basicConfig(
+    filename='logs.txt',
+    level=logging.ERROR, 
+    # filemode='w',
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 app = Flask(__name__)
-socketio = SocketIO(app)
 
 elevation_handler = ElevationHandler()
 elevation_handler.start()
-rotation_handler = RotationHandler()
+angle_handler = AngleHandler()
+
+def reboot_pi():
+    os.system('sudo reboot')
 
 @app.route('/')
 def index():
@@ -20,32 +33,39 @@ def index():
 def get_angles():
     elevation = elevation_handler.get_last_printed_angle()
     azimuth_angle = angle_handler.get_angle()
-    return jsonify({'elevation': elevation, 'azimuth': f'{round(azimuth_angle)}d'})
+    return jsonify({'elevation': elevation, 'azimuth': f'{round(azimuth_angle)}'})
 
-@socketio.on('button_event')
-def handle_button_event(data):
-    button_name = data.get('button_name')
-    action = data.get('action')
-
+@app.route('/button_event', methods=['POST'])
+def button_event():
+    global angle_handler
+    button_name = request.json.get('button_name')
+    action = request.json.get('action')
+    
     if action == 'press':
-        if button_name in ['left', 'right']:
-            rotation_handler.start_tracking(button_name)
-            if button_name == 'up':
-                move_up()
-            elif button_name == 'down':
-                move_down()
-            elif button_name == 'left':
+        if button_name == 'up':
+            stop()
+            move_up()
+        elif button_name == 'down':
+            stop()
+            move_down()
+        elif button_name in ['left', 'right']:
+            angle_handler.start_tracking(button_name)
+            if button_name == 'left':
+                stop()
                 move_left()
             elif button_name == 'right':
+                stop()
                 move_right()
-
+        elif button_name == 'stop':
+            stop()
+        elif button_name == 'reboot':
+            reboot_pi()
     elif action == 'release':
         if button_name in ['left', 'right']:
-            rotation_handler.stop_tracking()
+            angle_handler.stop_tracking()
         stop()
 
-    # Emit the updated angle to all connected clients
-    emit('angle_update', {'azimuth': round(angle_handler.get_angle())})
+    return jsonify({'button_message': 'test'})
 
 if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)

@@ -37,7 +37,7 @@ h1 {
     background-color: gray;
     color: white;
     border: none;
-    border-radius: 50%;
+    border-radius: 16px;
     box-shadow: 0 4px #999;
     outline: none;
 }
@@ -52,6 +52,14 @@ h1 {
     content: '';
     border-style: solid;
     display: inline-block;
+}
+
+.stop::after {
+    content: '';
+    border-style: solid;
+    display: inline-block;
+    border-width: 10px 10px 10px 10px;
+    border-color: white white white white;
 }
 
 .arrow-up::after {

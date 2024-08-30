@@ -18,7 +18,12 @@
         <button class="arrow-down" ontouchstart="buttonPress('down')" ontouchend="buttonRelease('down')"></button>
         </div>
         <button class="arrow-right" ontouchstart="buttonPress('right')" ontouchend="buttonRelease('right')"></button>
-        </div>
+    </div>
+    <div class="buttons">
+        <button class="stop" ontouchstart="buttonPress('stop')"></button>
+        <button class="reboot" ontouchstart="buttonPress('reboot')">Reboot</button>
+    </div>
+
 
     <script src="{{ url_for('static', filename='main.js')}}"></script>
 </div>
