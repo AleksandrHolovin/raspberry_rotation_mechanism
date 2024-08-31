@@ -60,6 +60,8 @@ def button_event():
             stop()
         elif button_name == 'reboot':
             reboot_pi()
+        elif button_name == 'reset_rotation':
+            angle_handler.set_zero()
     elif action == 'release':
         if button_name in ['left', 'right']:
             angle_handler.stop_tracking()

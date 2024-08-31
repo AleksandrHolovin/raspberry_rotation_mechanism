@@ -3,7 +3,7 @@ import time
 class AngleHandler:
     def __init__(self):
         self.azimuth_angle = 0
-        self.rotation_speed = 22.5  # degrees per second
+        self.rotation_speed = 18  # degrees per second
         self.start_time = None
         self.direction = None
 
@@ -26,6 +26,9 @@ class AngleHandler:
         self.azimuth_angle %= 360  # Ensure angle stays within 0-359 degrees
         self.start_time = None
         self.direction = None
+
+    def set_zero(self):
+        self.azimuth_angle = 0
 
     def get_angle(self):
         return self.azimuth_angle
