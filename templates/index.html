@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ULTIMATE SKY DEFENCE SHOTRM 4</title>
+    <title>VeselkaCC</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
 </head>
 <body>
     <div class="container">
         <div>
+            <img src="{{ url_for('static', filename='angles_table.jpeg')}}" class="table" />
+        </div>
+        <div>
         <h1>Elevation Angle: <span id="elevation">Loading...</span>°</h1>
         <h1>Azimuth Angle: <span id="azimuth">Loading...</span>°</h1>
         
         <div class="buttons">
-            <button class="arrow-left" ontouchstart="buttonPress('left', this)" ontouchend="buttonRelease('left')"></button>
+            <button class="arrow-left" ontouchstart="handleArrowPress('left', this)" ontouchend="handleArrowRelease('left')"></button>
             <div>
-            <button class="arrow-up" ontouchstart="buttonPress('up', this)" ontouchend="buttonRelease('up')"></button>
-            <button class="arrow-down" ontouchstart="buttonPress('down', this)" ontouchend="buttonRelease('down')"></button>
+            <button class="arrow-up" ontouchstart="handleArrowPress('up', this)" ontouchend="handleArrowRelease('up')"></button>
+            <button class="arrow-down" ontouchstart="handleArrowPress('down', this)" ontouchend="handleArrowRelease('down')"></button>
             </div>
-            <button class="arrow-right" ontouchstart="buttonPress('right', this)" ontouchend="buttonRelease('right')"></button>
+            <button class="arrow-right" ontouchstart="handleArrowPress('right', this)" ontouchend="handleArrowRelease('right')"></button>
         </div>
         <div class="buttons">
             <button class="stop" ontouchstart="buttonPress('stop')"></button>

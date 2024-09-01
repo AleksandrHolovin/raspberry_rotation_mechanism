@@ -1,23 +1,27 @@
+const BUTTON_TO_DISABLE = [
+    'arrow-left',
+    'arrow-right',
+    'arrow-up',
+    'arrow-down',
+]
+
 function disableButtons(exceptButton) {
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        if (button !== exceptButton) {
+    BUTTON_TO_DISABLE.forEach(className => {
+        const button = document.querySelector(`button.${className}`)
+        if (button && button !== exceptButton) {
             button.disabled = true;
-            button.style.opacity = '0.5';
         }
-    });
+    })
 }
 
 function enableButtons() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
         button.disabled = false;
-        button.style.opacity = '1';
     });
 }
 
-function buttonPress(buttonName, buttonElement) {
-    disableButtons(buttonElement);
+function buttonPress(buttonName) {
     fetch('/button_event', {
         method: 'POST',
         headers: {
@@ -32,7 +36,6 @@ function buttonPress(buttonName, buttonElement) {
 }
 
 function buttonRelease(buttonName) {
-    enableButtons();
     fetch('/button_event', {
         method: 'POST',
         headers: {
@@ -44,6 +47,15 @@ function buttonRelease(buttonName) {
         }),
     })
     .then(response => response.json());
+}
+
+function handleArrowPress(buttonName, buttonElement) {
+    disableButtons(buttonElement);
+    buttonPress(buttonName)
+}
+function handleArrowRelease(buttonName) {
+    enableButtons()
+    buttonRelease(buttonName);
 }
 
 function fetchAngle() {

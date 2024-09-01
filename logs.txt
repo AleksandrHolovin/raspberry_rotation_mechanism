@@ -32,3 +32,9 @@ Traceback (most recent call last):
   File "/home/oleksandr/Projects/rotation_machanism/app.py", line 64, in button_event
     angle_handler.set_zero()
 TypeError: AngleHandler.set_zero() takes 0 positional arguments but 1 was given
+2024-08-31 16:17:47,455 - ERROR - 192.168.161.42 - - [31/Aug/2024 16:17:47] code 400, message Bad request version ('*%SK\x00\x18¡j\x14}z\x8bt×j²\x1a¥aêõL')
+2024-08-31 16:17:47,468 - ERROR - 192.168.161.42 - - [31/Aug/2024 16:17:47] code 400, message Bad request version ('jj\x13\x03\x13\x01\x13\x02Ì©Ì¨À+À/À,À0À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S::\x00\x00\x00')
+2024-08-31 16:17:51,742 - ERROR - 192.168.161.42 - - [31/Aug/2024 16:17:51] code 400, message Bad request version ('\x05\x13¬³)VT\x88')
+2024-08-31 16:17:51,748 - ERROR - 192.168.161.42 - - [31/Aug/2024 16:17:51] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03')
+2024-08-31 16:18:00,227 - ERROR - 192.168.161.42 - - [31/Aug/2024 16:18:00] code 400, message Bad request version ('ºº\x13\x03\x13\x01\x13\x02Ì©Ì¨À+À/À,À0À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S**\x00\x00\x00')
+2024-08-31 16:18:00,232 - ERROR - 192.168.161.42 - - [31/Aug/2024 16:18:00] code 400, message Bad request version (':-')
