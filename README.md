@@ -81,3 +81,7 @@ dtoverlay=disable-bt
 ```bash
 sudo reboot
 ```
+
+## Scheme
+
+![Scheme](/assets/Scheme.png)
