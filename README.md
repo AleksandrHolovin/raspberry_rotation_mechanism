@@ -15,7 +15,6 @@ This application is designed to manage and control Starlink engine systems using
     iface eth0 inet static
     address 192.168.161.42
     netmask 255.255.255.0
-    gateway 192.168.1.1
     ```
 
 3. Restart the networking service:
@@ -23,13 +22,50 @@ This application is designed to manage and control Starlink engine systems using
     sudo systemctl restart networking
     ```
 
+## Configuring `dnsmasq`
+
+1. Install `dnsmasq`:
+    ```bash
+    sudo apt update
+    sudo apt install dnsmasq
+    ```
+
+2. Edit the `/etc/dnsmasq.conf` file:
+    ```bash
+    sudo nano /etc/dnsmasq.conf
+    ```
+
+3. Add the following configuration:
+    ```bash
+    interface=eth0                  
+    dhcp-range=192.168.161.0,192.168.161.255,24h
+    ```
+
+4. Restart the networking service:
+    ```bash
+    sudo systemctl restart networking
+    ```
+
+## Install `smbus`
+
+1. Install `smbus`:
+    ```bash
+    sudo apt install python3-smbus
+    ```
+
+2. Enable I2C interface in rp configuration:
+    ```bash
+    sudo nano /etc/dnsmasq.conf
+    ```
+
+
 ## Run at Startup
 
 Use `crontab` to run `launcher.sh` at startup:
 
 1. Ensure `launcher.sh` has executable permissions:
     ```bash
-    chmod +x /path/to/your/launcher.sh
+    chmod 755 /path/to/your/launcher.sh
     ```
 
 2. Edit the crontab file using the following command:
@@ -49,7 +85,7 @@ To set up a cron job to run `watchdog.sh` every minute:
 
 1. Ensure `watchdog.sh` has executable permissions:
 ```bash
-chmod +x /path/to/your/watchdog.sh
+chmod 755 /path/to/your/watchdog.sh
 ```
 
 2. Edit the crontab file using the following command:
