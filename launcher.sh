@@ -2,6 +2,6 @@
 # launcher.sh
 
 cd / 
-cd /home/oleksandr/Projects/rotation_machanism
+cd /home/veselka/Documents/raspberry_rotation_mechanism
 # sudo python app.py
 cd /

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to your Python script
-SCRIPT_PATH="/home/oleksandr/Projects/rotation_machanism/app.py"
+SCRIPT_PATH="/home/veselka/Documents/raspberry_rotation_mechanism/app.py"
 
 # Check if the script is running
 if ! pgrep -f "$(basename "$SCRIPT_PATH")" > /dev/null; then
