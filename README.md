@@ -53,10 +53,7 @@ This application is designed to manage and control Starlink engine systems using
     sudo apt install python3-smbus
     ```
 
-2. Enable I2C interface in rp configuration:
-    ```bash
-    sudo nano /etc/dnsmasq.conf
-    ```
+2. Enable I2C interface in rp configuration.
 
 
 ## Run at Startup
