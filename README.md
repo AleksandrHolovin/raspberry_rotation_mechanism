@@ -38,7 +38,7 @@ This application is designed to manage and control Starlink engine systems using
 3. Add the following configuration:
     ```bash
     interface=eth0                  
-    dhcp-range=192.168.161.0,192.168.161.255,24h
+    dhcp-range=192.168.161.0,192.168.161.255
     ```
 
 4. Restart the networking service:
