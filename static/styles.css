@@ -92,6 +92,24 @@ button:disabled {
     width: 90%;
 }
 
+.mobile {
+    display: none;
+}
+.desktop {
+    display: none;
+}
+
+@media (hover: none) {
+    .mobile {
+        display: inline;
+    }
+}
+@media (hover: hover) {
+    .desktop {
+        display: inline;
+    }
+}
+
 @media (max-width: 1000px) {
     .container {
         flex-direction: column-reverse;
