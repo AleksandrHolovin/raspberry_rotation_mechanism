@@ -40,6 +40,7 @@ def button_event():
     global angle_handler
     button_name = request.json.get('button_name')
     action = request.json.get('action')
+    angle = request.json.get('angle')
     
     if action == 'press':
         if button_name == 'up':
@@ -61,7 +62,7 @@ def button_event():
         elif button_name == 'reboot':
             reboot_pi()
         elif button_name == 'reset_rotation':
-            angle_handler.set_zero()
+            angle_handler.reset_angle(angle)
     elif action == 'release':
         if button_name in ['left', 'right']:
             angle_handler.stop_tracking()

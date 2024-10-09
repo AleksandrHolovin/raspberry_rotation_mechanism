@@ -1,5 +1,5 @@
 body {
-    height: 100vh;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #d0a6c1;
     -webkit-tap-highlight-color: transparent;
@@ -23,6 +23,7 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 .buttons button {
@@ -92,8 +93,31 @@ button:disabled {
     width: 90%;
 }
 
+.mobile {
+    display: none;
+}
+.desktop {
+    display: none;
+}
+
+@media (hover: none) {
+    .mobile {
+        display: inline;
+    }
+}
+@media (hover: hover) {
+    .desktop {
+        display: inline;
+    }
+}
+
 @media (max-width: 1000px) {
     .container {
         flex-direction: column-reverse;
+    }
+    .buttons button {
+        width: 70px;
+        height: 70px;
+        font-size: 14px;
     }
 }
